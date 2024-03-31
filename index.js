@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongodb = require("./config/conn");
 const userRouter = require("./routes/userRoutes");
+const studentRouter = require("./routes/studentRoutes");
 const userMiddleware = require("./middlewares/userMiddleware");
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 mongodb.mongoDBConnection();
 
 app.use("/api", userRouter);
+app.use("/student", studentRouter);
 app.use(userMiddleware);
 // app.use("/api/employee", employeeRouter);
 
