@@ -11,6 +11,8 @@ const studentController = async (req, res, next) => {
     // console.log(userStudentId);
     if (!student) {
       await Studentbio.create(req.body);
+      const jwt = student.createJWT();
+      console.log("My JWT is", jwt);
       return res.status(201).send("Student Added!");
     } else {
       next("UC");
